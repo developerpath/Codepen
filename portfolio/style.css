@@ -81,8 +81,7 @@ nav {
   height: 90px;
   position: fixed;
   top: 0;
-  width: 100%;
-  
+  width: 100%;  
 }
 
 nav h1 {
@@ -168,21 +167,9 @@ nav a:hover {
   margin-top: -130px;
 }
 .portfolio-block img {
-  width: 435px;
-  margin-bottom: 20px;
-}
-.block {
-  width: 435px;
-  margin-bottom: 20px;
-  background-color: gainsboro;
-  height: 435px;
-  display: inline-block;
-  text-align: center;
-  padding-top: 80px;
-  color: #075f5f;
-}
-.block p {
-  font-size: 50px;
+  width: 100%;
+  margin-bottom: 40px;
+  box-shadow: 2px 2px 5px #0a3835;
 }
 h2 {
   text-align: center;
@@ -210,6 +197,10 @@ textarea,
 .contact-block p {
   margin-right: 40px;
   text-align: justify;
+}
+.contact-block a {
+  text-decoration: none;
+  color: #1ba39c;
 }
 form{
   margin-left: 35px;
@@ -263,14 +254,14 @@ button {
   position: fixed;
   right: 40px;
   z-index: 101;
-  bottom: 90px;
+  bottom: 30px;
   color: #072727;
   transition: all 0.4s;
   display: none;
 }
 #to-top-btn:hover {
   cursor: pointer;
-  bottom: 93px;
+  bottom: 34px;
   transition: all 0.4s;
 }
 @media screen and (max-width: 1024px) {
@@ -293,8 +284,8 @@ button {
     padding: 0 5px;
     float: none;
   }
-  .block {
-    float: none;
+  .portfolio-block img {
+    width: 80%;
   }
   .about-block img {
     float: none
@@ -325,11 +316,10 @@ button {
   }
   body,
   nav{
-    min-width: 400px;
+    min-width: 300px;
   }
   nav .wrapper>ul {
     float: none;
-    min-width: 320px;
   }
   nav .wrapper>ul>li {
     padding: 0;
@@ -338,17 +328,29 @@ button {
   .menu-btn{
     display: block;
   }
-  .block {
-    width: 300px;
-    height: 300px;
-  }
-  h1 {
+  nav h1 {
     float: none;
     text-align: left;
     display: block;
+    font-size: 30px;
+  }
+  .wrapper{
+    padding: 0;
+  }
+  form {
+    margin: 0;
+  }
+  .block p,
+  p {
+    font-size:20px;
   }
 }
-
+@media screen and (max-width: 410px) {
+  nav .wrapper>ul {
+    margin-right: 70px;
+    margin-top: -20px;
+  }
+}
 
 
 
