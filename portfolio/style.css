@@ -2,12 +2,10 @@
 .container {
   max-width: 1024px;
   margin: 0 auto;
-/*  border: 3px solid red;*/
 }
 .wrapper {
   float: left;
   padding: 0 15px;
-/*  border: 3px solid yellow;*/
 }
 .wd12 {
   width: 100%;
@@ -38,7 +36,6 @@
 }
 .row {
   width: 100%;
-/*  border: 3px solid blue;*/
 }
 .clearfix {
   content: "";
@@ -59,11 +56,10 @@ body {
   margin: 0;
   font-family: "Lato";
   background-color: #d9d9d9;
-  color: #1c2631;
-  
+  color: #1c2631; 
 }
 p {
-    font-size: 25px;
+  font-size: 25px;
 }
 * {
   box-sizing: border-box;
@@ -83,12 +79,10 @@ nav {
   top: 0;
   width: 100%;  
 }
-
 nav h1 {
   font-weight: bold;
   font-size: 36px;
   margin: 15px 0
-
 }
 nav .row {
   padding-top: 10px;
@@ -157,8 +151,7 @@ nav a:hover {
   letter-spacing: 3px;
   margin-right: 20px;
   margin-bottom: 0;
-  font-size: 30px;
-  
+  font-size: 30px; 
 }
 .about-block h3:before {
   content: "";
@@ -205,7 +198,6 @@ textarea,
 form{
   margin-left: 35px;
 }
-
 footer {
   text-align: center;
 }
