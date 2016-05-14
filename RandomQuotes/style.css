@@ -1,0 +1,41 @@
+body {
+  background-image: url(images/2.jpg);
+  background-size: 100%;
+  background-position: 0 -200px;
+  
+  
+}
+.main {
+  width: 50%;
+  min-height: 200px;
+  background-color: rgba(36, 0, 24, 0.9);
+  color: #fff;
+  font-size: 20px;
+  padding: 30px 30px 80px;
+  position: relative;
+  border-radius: 20px;
+  top: 40px;
+  left: 30px;
+}
+h1 {
+  width: 90%;
+  margin: 10px auto;
+  text-align: center;
+  font-style: italic
+}
+.autor-block {
+  text-align: right;
+}
+button {
+  position: absolute;
+  bottom: 30px;
+  height: 40px;
+  width: 150px;
+  font-weight: bold;
+  color: rgb(36, 0, 24);
+  background-color: #fff;
+  font-family:serif;
+  font-size: 18px;
+  border: none;
+  border-radius: 6px;
+}

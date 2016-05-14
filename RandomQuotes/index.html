@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Random Quotes</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+</head>
+<body>
+  <div class="main">
+  <h1>“Don't cry because it's over, smile because it happened.” </h1>
+  <p class="autor-block">
+  <span>- </span><span class="autor">Dr. Seuss</span>
+  </p>
+  <div>
+    <button>GET QUOTE</button>
+  </div>
+  <script>
+    
+$(document).ready(function(){
+   var i;
+  $('button').click(function(){
+    var books = { "Pascal" : [ 
+            { "Name"  : "Pascal Made Simple", "price" : 700 },
+            { "Name"  : "Guide to Pascal", "price" : 400 }],  
+				
+            "Scala"  : [
+               { "Name"  : "Scala for the Impatient", "price" : 1000 }, 
+               { "Name"  : "Scala in Depth", "price" : 1300 }]    
+         }    
+
+   
+    i = Math.floor(Math.random()*2);
+    $('h1').text(books.Scala[i].price);
+  });
+});
+  </script>
+</body>
+</html>
+ 
