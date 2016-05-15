@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Random Quotes</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 </head>
 <body>
@@ -12,25 +13,36 @@
   <p class="autor-block">
   <span>- </span><span class="autor">Dr. Seuss</span>
   </p>
-  <div>
+  <div class="buttons">
     <button id="Btn">GET QUOTE</button>
+    <a id="tweet_btn" href="https://twitter.com/intent/tweet?text=" target="_blank" title="Tweet me"><i class="fa fa-lg fa-twitter" aria-hidden="true"></i></a>
   </div>
   <script>
-document.getElementById("Btn").onclick = loadDoc;
-function loadDoc() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (xhttp.readyState == 4 && xhttp.status == 200) {
-      var x = xhttp.responseText;
-      var i = Math.ceil(Math.random()*10);
-      x = JSON.parse(x);
-      document.getElementsByTagName("h1")[0].innerHTML = x[i].display;
-      document.getElementsByClassName("autor")[0].innerHTML = x[i].url;
+    var doc;
+    var quotes = document.getElementsByTagName("h1")[0];
+    var autors = document.getElementsByClassName("autor")[0];
+    var y = document.getElementById("tweet_btn");
+    
+    document.getElementById("tweet_btn").onclick = tweet;
+      function tweet() {
+        var name = y.getAttribute("href");
+        y.setAttribute("href", name + quotes.innerHTML + autors.innerHTML);
     }
-  };
+    
+    document.getElementById("Btn").onclick = loadDoc;
+      function loadDoc() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+        if (xhttp.readyState == 4 && xhttp.status == 200) {
+        doc = xhttp.responseText;
+        var i = Math.ceil(Math.random()*10);
+        doc = JSON.parse(doc);
+        quote.innerHTML = doc[i].Quote;
+        autor.innerHTML = doc[i].Autor;
+    }
+  }
   xhttp.open("POST", "https://raw.githubusercontent.com/developerpath/Codepen/master/RandomQuotes/myTutorials.txt", true);
   xhttp.send();
-
 }
   </script>
 </body>
