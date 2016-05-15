@@ -18,6 +18,7 @@
     <a id="tweet_btn" href="https://twitter.com/intent/tweet?text=" target="_blank" title="Tweet me"><i class="fa fa-lg fa-twitter" aria-hidden="true"></i></a>
   </div>
   <script>
+    var i = 0;
     var doc;
     var quote = document.getElementsByTagName("h1")[0];
     var author = document.getElementsByClassName("author")[0];
@@ -35,10 +36,13 @@
         xhttp.onreadystatechange = function() {
         if (xhttp.readyState == 4 && xhttp.status == 200) {
         doc = xhttp.responseText;
-        var i = Math.ceil(Math.random()*10);
+        var iCurrent = i;
+        while (iCurrent == i) {
+        i = Math.floor(Math.random()*10);
+        }
         doc = JSON.parse(doc);
-        quote.innerHTML = doc[i].quote;
-        author.innerHTML = doc[i].author;
+        quote.innerHTML = doc[i].Quote;
+        author.innerHTML = doc[i].Author;
     }
   }
   xhttp.open("POST", "https://raw.githubusercontent.com/developerpath/Codepen/master/RandomQuotes/myTutorials.txt", true);
