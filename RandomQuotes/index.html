@@ -10,8 +10,8 @@
 <body>
   <div class="main">
   <h1>“Don't cry because it's over, smile because it happened.” </h1>
-  <p class="autor-block">
-  <span>- </span><span class="autor">Dr. Seuss</span>
+  <p class="author-block">
+  <span>- </span><span class="author">Dr. Seuss</span>
   </p>
   <div class="buttons">
     <button id="Btn">GET QUOTE</button>
@@ -19,14 +19,14 @@
   </div>
   <script>
     var doc;
-    var quotes = document.getElementsByTagName("h1")[0];
-    var autors = document.getElementsByClassName("autor")[0];
+    var quote = document.getElementsByTagName("h1")[0];
+    var author = document.getElementsByClassName("author")[0];
     var y = document.getElementById("tweet_btn");
     
     document.getElementById("tweet_btn").onclick = tweet;
       function tweet() {
         var name = y.getAttribute("href");
-        y.setAttribute("href", name + quotes.innerHTML + autors.innerHTML);
+        y.setAttribute("href", name + quote.innerHTML + author.innerHTML);
     }
     
     document.getElementById("Btn").onclick = loadDoc;
@@ -37,8 +37,8 @@
         doc = xhttp.responseText;
         var i = Math.ceil(Math.random()*10);
         doc = JSON.parse(doc);
-        quote.innerHTML = doc[i].Quote;
-        autor.innerHTML = doc[i].Autor;
+        quote.innerHTML = doc[i].quote;
+        author.innerHTML = doc[i].author;
     }
   }
   xhttp.open("POST", "https://raw.githubusercontent.com/developerpath/Codepen/master/RandomQuotes/myTutorials.txt", true);

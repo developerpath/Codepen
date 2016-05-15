@@ -1,42 +1,42 @@
 ﻿[
 {
-"Quote": "Do not take life too seriously. You will never get out of it alive."
+"Quote": "Do not take life too seriously. You will never get out of it alive.",
 "Autor": "Elbert Hubbard"
 },
 {
-"Quote": "A woman's mind is cleaner than a man's: She changes it more often."
+"Quote": "A woman's mind is cleaner than a man's: She changes it more often.",
 "Autor": "Oliver Herford"
 },
 {
-"Quote": "People say nothing is impossible, but I do nothing every day."
+"Quote": "People say nothing is impossible, but I do nothing every day.",
 "Autor": "Winnie the Pooh"
 },
 {
-"Quote": "Success is often the result of taking a misstep in the right direction."
+"Quote": "Success is often the result of taking a misstep in the right direction.",
 "Autor": "AL BERNSTEIN"
 },
 {
-"Quote": "If people do not believe that mathematics is simple, it is only because they do not realize how complicated life is."
+"Quote": "If people do not believe that mathematics is simple, it is only because they do not realize how complicated life is.",
 "Autor": "JOHN VON NEUMANN"
 },
 {
-"Quote": " Worry is like a rocking chair: it gives you something to do but never gets you anywhere."
+"Quote": " Worry is like a rocking chair: it gives you something to do but never gets you anywhere.",
 "Autor": "ERMA BOMBECK"
 },
 {
-"Quote": "If you think nobody care if you're alive, try missing a couple of payments."
+"Quote": "If you think nobody care if you're alive, try missing a couple of payments.",
 "Autor": "EARL WILSON"
 },
 {
-"Quote": "Don't judge each day by the harvest you reap, but by the seed that you plant."
+"Quote": "Don't judge each day by the harvest you reap, but by the seed that you plant.",
 "Autor": "Robert Louis Stevenson"
 },
 {
-"Quote": "A boat doesn't go forward if each is rowing his own way."
+"Quote": "A boat doesn't go forward if each is rowing his own way.",
 "Autor": "African Proverb"
 },
 {
-"Quote": "The only man who is really free is the one who can turn down an invitation to dinner without giving an excuse."
+"Quote": "The only man who is really free is the one who can turn down an invitation to dinner without giving an excuse.",
 "Autor": "Jules Renard"
 }
 ]
