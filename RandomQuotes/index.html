@@ -13,27 +13,25 @@
   <span>- </span><span class="autor">Dr. Seuss</span>
   </p>
   <div>
-    <button>GET QUOTE</button>
+    <button id="Btn">GET QUOTE</button>
   </div>
   <script>
-    
-$(document).ready(function(){
-   var i;
-  $('button').click(function(){
-    var books = { "Pascal" : [ 
-            { "Name"  : "Pascal Made Simple", "price" : 700 },
-            { "Name"  : "Guide to Pascal", "price" : 400 }],  
-				
-            "Scala"  : [
-               { "Name"  : "Scala for the Impatient", "price" : 1000 }, 
-               { "Name"  : "Scala in Depth", "price" : 1300 }]    
-         }    
+document.getElementById("Btn").onclick = loadDoc;
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+      var x = xhttp.responseText;
+      var i = Math.ceil(Math.random()*10);
+      x = JSON.parse(x);
+      document.getElementsByTagName("h1")[0].innerHTML = x[i].display;
+      document.getElementsByClassName("autor")[0].innerHTML = x[i].url;
+    }
+  };
+  xhttp.open("POST", "https://raw.githubusercontent.com/developerpath/Codepen/master/RandomQuotes/myTutorials.txt", true);
+  xhttp.send();
 
-   
-    i = Math.floor(Math.random()*2);
-    $('h1').text(books.Scala[i].price);
-  });
-});
+}
   </script>
 </body>
 </html>
