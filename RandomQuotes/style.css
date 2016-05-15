@@ -1,9 +1,8 @@
 body {
   background-image: url(images/2.jpg);
-  background-size: 100%;
-  background-position: 0 -200px;
-  
-  
+  background-size: cover;
+  background-position: 0 15%;
+  overflow: hidden;
 }
 .main {
   width: 50%;
@@ -38,4 +37,21 @@ button {
   font-size: 18px;
   border: none;
   border-radius: 6px;
+}
+@media screen and (max-width: 900px){
+  body {
+    background-repeat: no-repeat;
+    background-position: 80% 0;
+    background-size: 130%;
+  }
+}
+@media screen and (max-width: 640px){
+  body {
+    background-size: 1024px 800px;
+    background-position: 90% 0;
+  }
+  .main {
+    left: 5px;
+    width: 75%;
+  }
 }
