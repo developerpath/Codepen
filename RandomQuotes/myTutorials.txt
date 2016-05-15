@@ -38,5 +38,9 @@
 {
 "Quote": "The only man who is really free is the one who can turn down an invitation to dinner without giving an excuse.",
 "Author": "Jules Renard"
+},
+{
+"Quote": "Don't cry because it's over, smile because it happened.",
+"Author": "Dr. Seuss"
 }
 ]

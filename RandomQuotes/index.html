@@ -9,9 +9,9 @@
 </head>
 <body>
   <div class="main">
-  <h1>“Don't cry because it's over, smile because it happened.” </h1>
+  <h1></h1>
   <p class="author-block">
-  <span>- </span><span class="author">Dr. Seuss</span>
+  <span>- </span><span class="author"></span>
   </p>
   <div class="buttons">
     <button id="Btn">GET QUOTE</button>
@@ -27,9 +27,9 @@
     document.getElementById("tweet_btn").onclick = tweet;
       function tweet() {
         var name = y.getAttribute("href");
-        y.setAttribute("href", name + quote.innerHTML + author.innerHTML);
+        y.setAttribute("href", name + quote.innerHTML + " -" + author.innerHTML);
     }
-    
+    onload = loadDoc;
     document.getElementById("Btn").onclick = loadDoc;
       function loadDoc() {
         var xhttp = new XMLHttpRequest();
@@ -38,11 +38,11 @@
         doc = xhttp.responseText;
         var iCurrent = i;
         while (iCurrent == i) {
-        i = Math.floor(Math.random()*10);
+        i = Math.ceil(Math.random()*10);
         }
         doc = JSON.parse(doc);
         quote.innerHTML = doc[i].Quote;
-        author.innerHTML = doc[i].Author;
+        author.innerHTML = doc[i].Author.toUpperCase();
     }
   }
   xhttp.open("POST", "https://raw.githubusercontent.com/developerpath/Codepen/master/RandomQuotes/myTutorials.txt", true);
