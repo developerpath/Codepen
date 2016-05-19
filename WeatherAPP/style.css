@@ -1,0 +1,61 @@
+.clearfix:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+h1 {
+  text-align: center;
+  font-size: 70px;
+  margin: 10px;
+  color: #fff;
+  letter-spacing: 5px;
+}
+body {
+  background-color: #1e0024;
+  text-align: center;
+}
+body>p {
+  color: #fff;
+}
+body>p>span {
+  color: #72a8ff;
+}
+.main {
+  width: 400px;
+  padding: 20px;
+  background-color: #000e33;
+  border-radius: 30px;
+  color: #fff;
+  text-align: center;
+  margin: 30px auto 0;
+  border: 10px solid #ffffff;
+}
+#humid {
+  margin-top: -3px;
+}
+img {
+  width: 45%;
+}
+.temp {
+  margin-top: -55px;
+  font-size: 60px; 
+}
+#change {
+  color: #72a8ff;
+}
+#change:hover {
+  cursor: pointer;
+}
+#city {
+  font-size: 50px;
+  margin-top: 0px;
+  margin-bottom: 0;
+}
+.max {
+  float: left;
+  margin-left: 20px;
+}
+.min {
+  float: right;
+  margin-right: 20px;
+}
