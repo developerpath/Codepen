@@ -4,51 +4,55 @@
   <meta charset="UTF-8">
   <title>Document</title>
   <link rel="stylesheet" href="style.css">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 </head>
 <body>
  <h1>Free Code Camp<br>Weather App</h1>
   <div class="main">
     <p id="city"></p>
-    <div><img id="pic" src="01d.png" alt=""></div>
+    <div><img id="pic" src="" alt="Weather"></div>
     <div class="temp">
       <span id="temp"></span><sup>&#9900;</sup><span id="change">C</span>
     </div>
-    <p id="humid">Humidity: 33%</p>
+    <p id="humid"></p>
     <p id="time"></p>
   </div>
   <p>Created by <span>Chernyshev Alex</span></p>
   
-   <script>
-    document.getElementById('change').onclick = function (){
-      var z = document.getElementById('change');
-        if (z.innerHTML == "C"){
-          z.innerHTML = "F";
-          document.getElementById('temp').innerHTML = Math.round(1.8*(doc.main.temp-273)+32);
-        }else{
-          z.innerHTML = "C";
-          document.getElementById('temp').innerHTML = Math.round(doc.main.temp)-273;
+<script>
+$(document).ready(function(){
+  $.ajax({
+    url:'http://ip-api.com/json',
+    type:'GET',
+    success: function (locationApi) {
+      var lat = locationApi.lat;
+      var long = locationApi.lon
+      $.ajax({           
+        url:'http://api.openweathermap.org/data/2.5/weather?lat='+lat+'&lon='+long+'&appid=05a96ed3c1996fb4ad230d4446917bbd',
+        type:'GET',
+        dataType:"jsonp",
+        success: function (doc) {
+          setWeather(doc);
         }
-      };
-    onload = function load() {
-      navigator.geolocation.getCurrentPosition(function showPosition(position) {
-      var  x = Math.ceil(position.coords.latitude*10)/10; 
-      var  y = Math.ceil(position.coords.longitude*10)/10;
-      var xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function() {
-        if (xhttp.readyState == 4 && xhttp.status == 200) {
-          doc = xhttp.responseText;
-          doc = JSON.parse(doc);
-          document.getElementById('city').innerHTML = doc.name + ", " + doc.sys.country;
-          document.getElementById('temp').innerHTML = Math.round(doc.main.temp)-273;
-          document.getElementById('pic').setAttribute("src", doc.weather[0].icon+".png");
-          document.getElementById('humid').innerHTML = "Humidity: " + doc.main.humidity + "%";
+      })
     }
-  };
-  var key = "&appid=05a96ed3c1996fb4ad230d4446917bbd";    
-  xhttp.open("POST", "http://api.openweathermap.org/data/2.5/weather?lat="+x+"&lon="+y+key, true);
-  xhttp.send();
-  });
-};
-  </script>
+  })
+})
+function setWeather(data){
+  $("#temp").text(Math.round(data.main.temp)-273);
+  $("#city").text(data.name + ", " + data.sys.country);
+  $("#pic").attr("src", "http://raw.githubusercontent.com/developerpath/Codepen/master/WeatherAPP/" + data.weather[0].icon +".png");
+  $("#humid").text("Humidity: " + data.main.humidity + "%");
+  var grade = $("#change").click(function(){
+    if (grade.text() == "C"){
+      grade.text("F");
+      $("#temp").text(Math.round(1.8*(data.main.temp-273)+32));
+    }else{
+      grade.text("C");
+      $("#temp").text(Math.round(data.main.temp)-273);
+    }
+  })
+}
+</script>
 </body>
 </html>
