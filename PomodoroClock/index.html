@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PomodoroClock</title>
+  <link rel="stylesheet" href="style.css">
+  <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+</head>
+<body>
+  <h1><span>Free Code Camp</span><br>Pomodoro Clock</h1>
+  <div class="container">
+   <div class="choose-time">
+    <ul>
+      <li class="minus">-</li>
+      <li id="break" class="time_num">5</li>
+      <li class="plus">+</li>
+    </ul>
+    <ul>
+      <li class="minus">-</li>
+      <li id="main" class="time_num">25</li>
+      <li class="plus">+</li>
+    </ul>
+    </div>
+    <div class="timer">
+      
+      <h2></h2>
+      <div id="start"><span id="min">25</span>:<span id="sec"></span></div>
+    </div>
+  </div>
+  <audio class="audioDemo" preload="none"> 
+   <source src="Cuckoo.wav" type="audio/mpeg">
+</audio>
+  <script>
+    $(document).ready(function(){
+      var t = $("#main").text();
+      console.log(t);
+      var sec = 0;
+      x = false;
+      var z;
+      $("h2").text("Session");
+      $("#sec").text(check(sec));
+      
+      
+      function check(){
+        if(sec<10 && sec>=0){
+          sec = "0"+sec;
+        }
+        if(sec<0){
+          sec = 59;
+        }
+        return sec;
+      }
+      
+      function time() {
+      z = setInterval(function(){
+          sec--;
+          if(sec<0){
+            t--;
+            if(t<0){
+              switch($("h2").text()){
+                case "Session":
+                  t = $("#break").text();
+                  $("h2").text("Break");
+                  $(".audioDemo").trigger('load');
+                  $(".audioDemo").trigger('play');
+                  break;
+                case "Break":
+                  t = $("#main").text();
+                  $("h2").text("Session");
+                  $(".audioDemo").trigger('load');
+                  $(".audioDemo").trigger('play');
+              }
+            }
+            $("#min").text(t);
+          }
+          $("#sec").text(check(sec));
+        }, 1000);
+      }
+      
+      $(".minus").click(function(){
+        if(x == false){
+        var num = $(this).parent().find(".time_num").text();
+        num--;
+        if(num < 1){
+          num = 1;
+        }
+        if($(this).parent().find(".time_num").attr("id") == "main"){
+          $("#min").text(num);
+          sec = 0;
+          $("#sec").text(check(sec));
+          t = num;
+        }
+        $(this).parent().find(".time_num").text(num);
+        };
+      })
+      $(".plus").click(function(){
+        if(x == false){
+        var num = $(this).parent().find(".time_num").text();
+        num++;
+        if($(this).parent().find(".time_num").attr("id") == "main"){
+          $("#min").text(num);
+          sec = 0;
+          $("#sec").text(check(sec));
+          t = num;
+        }
+        $(this).parent().find(".time_num").text(num);
+        };
+      })
+      
+      $('#start').click(function(){        
+        if(x == false){
+          time();
+          x = true;
+        }else{
+          clearInterval(z);
+          x = false;
+        }
+      })
+
+    })
+  </script>
+</body>
+</html>
