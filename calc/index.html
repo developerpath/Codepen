@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title></title>
+<meta name="" content="">
+<link href="main.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+
+</head>
+<body>
+
+<div class="container">
+	<div id="" class="display">0<span></span></div>
+	<div id="" class="button">C</div>
+	<div id="" class="button">+-</div>
+	<div id="" class="button">/</div>
+	<div id="" class="button">*</div>
+	<div id="" class="button num">7</div>
+	<div id="" class="button num">8</div>
+	<div id="" class="button num">9</div>
+	<div id="" class="button">-</div>
+	<div id="" class="button num">4</div>
+	<div id="" class="button num">5</div>
+	<div id="" class="button num">6</div>
+	<div id="" class="button oper">+</div>
+	<div id="" class="button num">1</div>
+	<div id="" class="button num">2</div>
+	<div id="" class="button num">3</div>
+	<div id="" class="button equil oper">=</div>
+	<div id="" class="button zero num">0</div>
+	<div id="" class="button num">.</div>
+</div>
+
+<script>
+$(document).ready(function(){
+    var dot = false;
+$('.button').click(function(){
+  var txt = $(this).text();
+  var def = "0";
+  var result = "";
+
+  if ($('.display').text() == "0"){
+    if (txt == "=" || txt == "C"){
+    $('.display').text("0");
+    }else if(txt == "+" || txt == "-" || txt == "*" || txt == "/") {
+      $('.display').append(txt);
+    }else if(txt == "+-"){
+      $('.display').text("0");
+    }else{
+    $('.display').text(txt);
+    }
+  }else{
+    switch(txt){
+      case "=":
+        var result = eval($('.display').text());
+        $('.display').text(result);
+        dot = false;
+        break;
+      case "C":
+        $('.display').text(def);
+        dot = false;
+        break;
+      case "+-":
+        if($('.display').text()>=0){
+          $('.display').text(-Math.abs($('.display').text()));
+        }else{
+          $('.display').text(Math.abs($('.display').text()));
+        }
+        break;
+      case ".":
+        if(dot == false){
+          $('.display').append(txt);
+          dot = true;
+          break;
+        }else{
+          break;
+        }
+      default:
+        var sign = ["+","-","/","*"];
+        var disp = $('.display').text();
+        var l = disp.length - 1;
+        if(sign.indexOf(disp.slice(l)) >= 0){
+          for(i=0; i<sign.length; i++){
+            if(txt == sign[i]){
+              $('.display').text(disp.slice(0, l));
+              break;
+            }
+          }
+          $('.display').append(txt);
+          dot = false;
+        }else{
+         
+          $('.display').append(txt);
+          
+      }
+    }
+  }
+})
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+</head>
+<body>
+  <p>Created by:<br> <span>Chernyshev Alex</span></p>
+<h1>Free Code Camp</h1> 
+<p>Wikipedia Viewer</p>
+
+<form>
+<input id="text" type="text" />
+<button id="btn">GO!</button>
+</form>
+<a id="random" href="https://en.wikipedia.org/wiki/Special:Random">Look a random Wikipedia article.</a>
+<ul>
+</ul>
+
+
+<script>
+  $(document).ready(function(){
+  $("#btn").click(function(event){
+    event.preventDefault();
+   var y = $("#text").val();  
+ $.ajax({
+  url: '//en.wikipedia.org/w/api.php',
+  data: { action: 'query', list: 'search', srsearch: y, format: 'json', srlimit: 10 },
+  dataType: 'jsonp',
+  success: function (data) {
+    listMaker(data);
+    }
+})
+ function listMaker(data){
+   var link = "https://en.wikipedia.org/wiki/";
+   var obj = data.query.search;
+   $("ul").text("");
+    if (data.query.searchinfo.totalhits == 0){
+     $("ul").html('<li><span class="header">Nothing</span></li>');
+    }
+   for(i=0; i<obj.length; i++){
+     $("ul").append('<li><a href='+ link + obj[i].title + '>' + '<span class="header">' + obj[i].title + '</span>' + '<br>' + obj[i].snippet + '</a></li>');
+   }
+   $("li").animate({opacity: "1"},500);
+ }
+})
+})
+
+</script>
+</body>
+</html>

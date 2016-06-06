@@ -25,8 +25,8 @@ $(document).ready(function(){
     url:'http://ip-api.com/json',
     type:'GET',
     success: function (locationApi) {
-      var lat = locationApi.lat;
-      var long = locationApi.lon
+      var lat = Math.ceil(locationApi.lat*10)/10;
+      var long = locationApi.lon+0.1;
       $.ajax({           
         url:'http://api.openweathermap.org/data/2.5/weather?lat='+lat+'&lon='+long+'&appid=05a96ed3c1996fb4ad230d4446917bbd',
         type:'GET',
