@@ -1,16 +1,19 @@
+*{
+  box-sizing:border-box;
+}
 body{
   background-color: #cac0e2;
   font-family: 'Lato';
   color: #640000;
   text-align: center;
-  min-width: 400px;
+  min-width: 310px;
 }
 .container{
   display: inline-block;
 }
 .timer{
-  height: 400px;
-  width: 400px;
+  height: 350px;
+  width: 350px;
   border-radius: 50%;
   text-align: center;
   border: 20px solid #ff4b4b;
@@ -25,16 +28,16 @@ body{
 }
 h1{
   margin: 0;
-  font-size: 50px;
+  font-size: 40px;
   font-family: 'Permanent Marker';
-  line-height: 45px;
+  line-height: 35px;
 }
 h1 span {
   letter-spacing: 6px;
 }
 .timer h2{
-  margin-top: 80px;
-  font-size: 70px;
+  margin-top: 60px;
+  font-size: 55px;
   font-weight: normal;
   margin-bottom: 0;
   font-family: 'Lato';
@@ -44,7 +47,7 @@ ul{
   font-size: 25px;
   padding: 0 10px;
   display: inline-block;
-  margin-left: 40px;
+  margin-left: 30px;
   margin-bottom: 0;
 }
 li{
@@ -52,10 +55,10 @@ li{
 }
 .time_num{
   border: 10px solid #ff4b4b;
-  min-width: 35px;
+  min-width: 70px;
   text-align: center;
   padding: 8px;
-  border-radius: 8px
+  border-radius: 8px;
 }
 .plus,
 .minus{
@@ -69,9 +72,31 @@ li{
 
 ul:last-of-type{
   position: absolute;
-  right: 40px;
+  right: 30px;
 }
 .choose-time{
   position: relative;
   text-align: left;
 }
+@media screen and (max-width: 425px) {
+    h1 {
+        font-size: 25px;
+        line-height: 25px;
+    }
+    .timer{
+      height: 300px;
+      width: 300px;
+    }
+    .timer h2{
+      margin-top: 35px;
+      font-size: 40px;
+    }
+    ul:last-of-type{
+      right: 0;
+    }
+    ul{
+      padding: 0;
+      margin-left: 0;
+    }
+
+  }
