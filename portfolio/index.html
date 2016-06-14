@@ -8,8 +8,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
   <script>
-    
-    $(document).ready(function(){
+       $(document).ready(function(){
       var x = 0;
       function showLogo() {
         $('nav .wrapper>ul>li').css('display', 'none');
@@ -48,7 +47,22 @@
       $('#to-top-btn').click(function(){
         $('body').animate({scrollTop: 0}, 400);
       });
+     $(window).scroll(function() {
+    var scrollPos = $(document).scrollTop();
+    $('.nav a').each(function () {
+      console.log(currLink = $(this));
+        var currLink = $(this);
+        var refElement = $(currLink.attr("href"));
+                console.log(refElement);
+        if (refElement.position().top <= scrollPos) {
+
+            $('.nav a').removeClass("java");
+            currLink.addClass("java");
+        }
+       
+});
     });
+    })
   </script>
 </head>
 <body>
@@ -59,8 +73,8 @@
         <h1>DeveloperPath</h1>
       </div>
       <div class="wrapper right">
-        <ul>
-          <li><a href="#about">About</a></li>
+        <ul class='nav'>
+          <li><a href="#about" class="java">About</a></li>
           <li><a href="#portfolio">Portfolio</a></li>
           <li><a href="#contact">Contact</a></li>
           <ul class="menu-btn">
@@ -115,8 +129,8 @@
   <div class="row clearfix contact-block">
     <h2 id="contact">Contact Me</h2>
     <div class="wrapper wd6 right">
-      <p>This form is not working for now...<br>
-        If you would like contact me use this e-mail address: <a href="mailto: graphs@mail.ru">graphs@mail.ru</a></p>
+      <p>This form is not worknig here...<br>
+        If you would like contact me use this e-mail address: <a href="mailto:graphs@mail.ru">graphs@mail.ru</a></p>
     </div>
     <div class="wrapper wd6">
       <form>
@@ -140,10 +154,10 @@
         <div class="wrapper wd6">
           <h3>Around the web</h3>
           <ul>
-            <li><a href="https://codepen.io/DeveloperPath/" target="_blank"><i class="fa fa-lg fa-codepen" aria-hidden="true"></i></a></li>
-            <li><a href="https://github.com/developerpath" target="_blank"><i class="fa fa-lg fa-git" aria-hidden="true"></i></a></li>
-            <li><a href="https://facebook.com/alex.chernyshev.14" target="_blank"><i class="fa fa-lg fa-facebook" aria-hidden="true"></i></a></li>
-            <li><a href="https://www.linkedin.com/in/oleksandr-chernyshev-6087bb11b" target="_blank"><i class="fa fa-lg fa-linkedin" aria-hidden="true"></i></a></li>
+            <li><a href="https://codepen.io/DeveloperPath/" target="_blank"><i class="fa fa-lg fa-codepen"></i></a></li>
+            <li><a href="https://github.com/developerpath" target="_blank"><i class="fa fa-lg fa-git"></i></a></li>
+            <li><a href="https://facebook.com/alex.chernyshev.14" target="_blank"><i class="fa fa-lg fa-facebook"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/oleksandr-chernyshev-6087bb11b" target="_blank"><i class="fa fa-lg fa-linkedin"></i></a></li>
           </ul>
         </div>
       </div>
@@ -155,6 +169,6 @@
     </div>
   </div>
 </footer>
-<i id="to-top-btn" class="fa fa-4x fa-angle-double-up" aria-hidden="true"></i>
+<i id="to-top-btn" class="fa fa-4x fa-angle-double-up"></i>
 </body>
 </html>
