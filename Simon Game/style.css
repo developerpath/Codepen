@@ -148,6 +148,7 @@ li p {
   background: -o-radial-gradient(#89414e, #3b2428);
   left: -3px;
   top: -3px;
+  border-radius: 200px 0 0 0;
 }
 #blue1 {
   background: radial-gradient(#363b4b , #0e1d3e);
@@ -156,6 +157,7 @@ li p {
   background: -o-radial-gradient(#363b4b , #0e1d3e);
   right: -5px;
   top: -3px;
+  border-radius: 0 200px 0 0;
 }
 #green2 {
   background: radial-gradient(#536257 , #082609);
@@ -164,6 +166,7 @@ li p {
   background: -o-radial-gradient(#536257 , #082609);
   bottom: -5px;
   left: -3px;
+  border-radius: 0 0 0 200px;
 }
 #yellow3 {
   background: radial-gradient(#79796e , #3f4106);
@@ -171,7 +174,8 @@ li p {
   background: -moz-radial-gradient(#79796e , #3f4106);
   background: -o-radial-gradient(#79796e , #3f4106);
   right: -5px;
-  bottom: -5px
+  bottom: -5px;
+  border-radius: 0 0 200px 0;
 }
 #red0 .inner {
   background-color: #ff2f2f;

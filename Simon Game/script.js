@@ -1,4 +1,5 @@
 $(document).ready(function(){
+  var countTimer, inter;
   var game = {
     btn: ["#red0", "#blue1", "#green2", "#yellow3"],
     compMemory: [],
@@ -18,13 +19,13 @@ $(document).ready(function(){
     game.index = [];
     game.gameOn = true;
     game.round = 0;
-  };
+  }
   function getNum(){
     return Math.round(Math.random()*10/3);
-  };
+  }
   function compTurn(){
     var i = 0;
-    var inter = setInterval(function(){
+    inter = setInterval(function(){
       game.sound[game.index[i]].play();
       $(game.compMemory[i]+" .inner").animate({opacity: 1}, 200);
       $(game.compMemory[i]+" .inner").animate({opacity: 0}, 600);
@@ -33,9 +34,9 @@ $(document).ready(function(){
         clearInterval(inter);
         playerTurn();
         $(".buttons").on(btnFlash());
-      }; 
+      } 
     },1000);
-  };
+  }
   function startGame(){
     $(".btn").on({
       mousedown: function(){
@@ -51,7 +52,7 @@ $(document).ready(function(){
         });
       }
     });
-  };
+  }
   function btnFlash(){
     $(".buttons").mousedown(function(){
       $(this).find(".inner").css("opacity", 1);
@@ -59,7 +60,7 @@ $(document).ready(function(){
     $(".buttons").mouseup(function(){
       $(this).find(".inner").css("opacity", 0);
     });
-  };
+  }
   function count(){
     $('#disp').text(checkR(++game.round));
   }
@@ -84,24 +85,24 @@ $(document).ready(function(){
           } 
         }else{
           game.sound[$(this).attr('id').slice($(this).length-2)].play();
-          if(playerRepeat.length == 0){
+          if(playerRepeat.length === 0){
             memory();
             count();
             compTurn();
             $(".buttons").off();
-          };
-        };
+          }
+        }
     });
-  };
+  }
   $('.stick').click(function(){
-    if(game.gameOn == false){
+    if(game.gameOn === false){
       $('#power div').animate({left: "3px"}, 100);
       $('#disp').css("color", "#772424");
-      $('h1').css("text-shadow", "16px 15px 45px #fff, 0 5px 15px #fff")
+      $('h1').css("text-shadow", "16px 15px 45px #fff, 0 5px 15px #fff");
       game.gameOn = true;
     }else{
       $('#power div').animate({left: '-34px'}, 100);
-      $('h1').css("text-shadow", "none")
+      $('h1').css("text-shadow", "none");
       game.gameOn = false;
       $('#disp').css("color", "#5a0000").text("--");
       $(".buttons").off(btnFlash());
@@ -109,7 +110,7 @@ $(document).ready(function(){
       game.index = [];
       game.strict = false;
       $('#strict').css('background-color', '#008181');
-    };
+    }
   });
   function checkR(r){
     if(r<10){
@@ -126,18 +127,18 @@ $(document).ready(function(){
   
   startGame();
   $('.btn').click(function(){
-      
-      if(game.gameOn == true && $(this).attr('id') == 'start'){
-        setTimeout(count, 1000);
+    clearTimeout(countTimer);
+    clearInterval(inter);
+      if(game.gameOn === true && $(this).attr('id') === 'start'){
+        countTimer = setTimeout(count, 1000);
         init();
         memory();
-        $('#disp').text(checkR(game.round));
         $('.buttons').off(compTurn());
-      };
-    if(game.gameOn == true && $(this).attr('id') == 'strict' && game.strict == false){
+      }
+    if(game.gameOn === true && $(this).attr('id') === 'strict' && game.strict === false){
       game.strict = true;
       $('#strict').css('background-color', '#00c6c6');
-    }else if ($(this).attr('id') == 'strict'){
+    }else if ($(this).attr('id') === 'strict'){
       game.strict = false;
       $('#strict').css('background-color', '#008181');
     }
