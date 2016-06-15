@@ -1,13 +1,21 @@
 $(document).ready(function(){
   var game = {
-    btn: ["#red", "#blue", "#green", "#yellow"],
+    btn: ["#red0", "#blue1", "#green2", "#yellow3"],
     compMemory: [],
+    index: [],
     gameOn: false,
     strict: false,
-    round: 0
+    number: 0,
+    round: 0,
+    sound: [new Audio("https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"),
+            new Audio("https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"),
+            new Audio("https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"),
+            new Audio("https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"),
+            new Audio("http://kristarling.com/publicassets/fail.wav")]
   };
   function init(){
     game.compMemory = [];
+    game.index = [];
     game.gameOn = true;
     game.round = 0;
   };
@@ -16,12 +24,13 @@ $(document).ready(function(){
   };
   function compTurn(){
     var i = 0;
-    setInterval(function(){
+    var inter = setInterval(function(){
+      game.sound[game.index[i]].play();
       $(game.compMemory[i]+" .inner").animate({opacity: 1}, 200);
       $(game.compMemory[i]+" .inner").animate({opacity: 0}, 600);
       i++;
       if(i==game.compMemory.length){
-        clearInterval(setInterval);
+        clearInterval(inter);
         playerTurn();
         $(".buttons").on(btnFlash());
       }; 
@@ -32,7 +41,7 @@ $(document).ready(function(){
       mousedown: function(){
         $(this).css({
           boxShadow: 'none',
-          transform: 'translateY(5px)'
+          transform: 'translateY(5px)',
         });
       },
       mouseup: function(){
@@ -56,23 +65,27 @@ $(document).ready(function(){
   }
   function playerTurn(){
     var playerRepeat = game.compMemory.slice(0);
+    
     $(".buttons").click(function(){
         var presentBtn = $(this).attr('id');
         if(presentBtn !== playerRepeat.shift(0).slice(1)){
           if(game.strict){
+            game.sound[4].play();
             init();
-            game.compMemory.push(game.btn[getNum()]);
+            memory();
             $('#disp').text(checkR(game.round));
             count();
             compTurn();
             $(".buttons").off();
           }else{
             compTurn();
+            game.sound[4].play();
             $(".buttons").off();
           } 
         }else{
+          game.sound[$(this).attr('id').slice($(this).length-2)].play();
           if(playerRepeat.length == 0){
-            game.compMemory.push(game.btn[getNum()]);
+            memory();
             count();
             compTurn();
             $(".buttons").off();
@@ -82,15 +95,18 @@ $(document).ready(function(){
   };
   $('.stick').click(function(){
     if(game.gameOn == false){
-      $('#power div').animate({left: "0"}, 100);
-      $('#disp').css("color", "red");
+      $('#power div').animate({left: "3px"}, 100);
+      $('#disp').css("color", "#772424");
+      $('h1').css("text-shadow", "16px 15px 45px #fff, 0 5px 15px #fff")
       game.gameOn = true;
     }else{
-      $('#power div').animate({left: '-38px'}, 100);
+      $('#power div').animate({left: '-34px'}, 100);
+      $('h1').css("text-shadow", "none")
       game.gameOn = false;
       $('#disp').css("color", "#5a0000").text("--");
       $(".buttons").off(btnFlash());
       game.compMemory = [];
+      game.index = [];
       game.strict = false;
       $('#strict').css('background-color', '#008181');
     };
@@ -102,13 +118,19 @@ $(document).ready(function(){
       return r;
     }
   }
+  function memory(){
+    var number = getNum();
+    game.compMemory.push(game.btn[number]);
+    game.index.push(number);
+  }
+  
   startGame();
   $('.btn').click(function(){
       
       if(game.gameOn == true && $(this).attr('id') == 'start'){
         setTimeout(count, 1000);
         init();
-        game.compMemory.push(game.btn[getNum()]);
+        memory();
         $('#disp').text(checkR(game.round));
         $('.buttons').off(compTurn());
       };
