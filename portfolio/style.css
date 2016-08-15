@@ -81,7 +81,8 @@ nav {
   height: 90px;
   position: fixed;
   top: 0;
-  width: 100%;  
+  width: 100%;
+  z-index: 100;
 }
 
 nav h1 {
@@ -183,6 +184,9 @@ nav a:hover {
   text-align: center;
   padding-top: 80px;
   color: #075f5f;
+}
+.portfolio-block .wrapper img:hover{
+  -webkit-filter: blur(2px);
 }
 .block p {
   font-size: 50px;
